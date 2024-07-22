@@ -1,0 +1,9 @@
+services:
+        jupyter:
+            container_name: jupyter
+            network_mode: host
+            build: .
+            ports:
+            - "8888:8888"
+            volumes:
+            - ./notebooks:/workspace/notebooks

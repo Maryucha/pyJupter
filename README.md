@@ -44,24 +44,29 @@ Você precisará do token de autenticação gerado pelo Jupyter. Esse token ser�
 
 ## Estrutura do Projeto
 
-    ```bash
+```bash
         .
         ├── Dockerfile
         ├── docker-compose.yml
         ├── notebooks
-        │   └── exemplo.ipynb
+        │   └── exemple.ipynb
         └── README.md
+        └── requirements.txt
+        └── .env
+
         Dockerfile: Define a imagem Docker personalizada.
         docker-compose.yml: Configurações do Docker Compose para orquestrar o contêiner.
+        requirements.txt: Definição de libs que o ambiente pode precisar.
+        .env: Arquivo de definição das váriaveis de ambiente.
         notebooks/: Diretório onde os notebooks Jupyter são armazenados.
         README.md: Este arquivo.
-    ```
+```
 ## Customização
 Você pode modificar o arquivo Dockerfile para adicionar mais dependências ou mudar a versão do Python conforme necessário. Da mesma forma, você pode editar o docker-compose.yml para ajustar as configurações do contêiner.
 
  - Exemplo de Dockerfile
 
-    ```bash
+```bash
         FROM python:3.8-slim
 
         RUN pip install --upgrade pip
@@ -71,10 +76,10 @@ Você pode modificar o arquivo Dockerfile para adicionar mais dependências ou m
 
         CMD ["jupyter", "notebook", "--ip=0.0.0.0", "--port=8888", "--no-browser", "--allow-root"]
 
-    ```
+```
 - Exemplo de docker-compose.yml
 
-    ```bash
+```bash
         version: '3.8'
 
         services:
@@ -84,7 +89,7 @@ Você pode modificar o arquivo Dockerfile para adicionar mais dependências ou m
             - "8888:8888"
             volumes:
             - ./notebooks:/workspace/notebooks
-      ```
+```
 
 ## Contribuições
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues e pull requests com melhorias ou correções.
